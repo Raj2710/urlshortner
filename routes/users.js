@@ -50,7 +50,7 @@ router.post("/register",async(req,res)=>{
         html:`<h1>Email Confirmation</h1>
         <h2>Hello ${req.body.firstname}</h2>
         <p>You are one step away to shorten your lengthy url. Please confirm your email by clicking on the following link</p>
-        <a href=https://urr.herokuapp.com/users/confirm/${token}> Click here</a>
+        <a href=https://urlshortnerbe.herokuapp.com/users/confirm/${token}> Click here</a>
         <p>The link expires 15 minutes from now</p>
         </div>`
       })
@@ -142,7 +142,7 @@ router.post("/login",async(req,res)=>{
         html:`<h1>Email Confirmation</h1>
         <h2>Hello ${user.firstname}</h2>
         <p>You are one step away to shorten your lengthy url. Please confirm your email by clicking on the following link</p>
-        <a href=https://urr.herokuapp.com/users/confirm/${token}> Click here</a>
+        <a href=https://urlshortnerbe.herokuapp.com/users/confirm/${token}> Click here</a>
         <p>The link expires 15 minutes from now</p>
         </div>`
       })
