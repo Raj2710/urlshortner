@@ -50,7 +50,7 @@ router.post("/register",async(req,res)=>{
         html:`<h1>Email Confirmation</h1>
         <h2>Hello ${req.body.firstname}</h2>
         <p>You are one step away to shorten your lengthy url. Please confirm your email by clicking on the following link</p>
-        <a href=https://password-reset-flow.herokuapp.com/users/confirm/${token}> Click here</a>
+        <a href=https://urr.herokuapp.com/users/confirm/${token}> Click here</a>
         <p>The link expires 15 minutes from now</p>
         </div>`
       })
@@ -142,7 +142,7 @@ router.post("/login",async(req,res)=>{
         html:`<h1>Email Confirmation</h1>
         <h2>Hello ${user.firstname}</h2>
         <p>You are one step away to shorten your lengthy url. Please confirm your email by clicking on the following link</p>
-        <a href=https://password-reset-flow.herokuapp.com/users/confirm/${token}> Click here</a>
+        <a href=https://urr.herokuapp.com/users/confirm/${token}> Click here</a>
         <p>The link expires 15 minutes from now</p>
         </div>`
       })
@@ -199,7 +199,7 @@ router.post('/reset-password',async(req,res)=>{
         html:`<h2>Hello ${user.firstname}</h2>
         <p>We've recieved a request to reset the password for your account associated with your email.
         You can reset your password by clicking the link below</p>
-        <a href=https://password-resetflow.herokuapp.com/user/update-password/${token}> Reset Password</a>
+        <a href=https://urr.herokuapp.com/user/update-password/${token}> Reset Password</a>
         <p><b>Note:</b>The link expires 15 minutes from now</p>
         </div>`
       })
