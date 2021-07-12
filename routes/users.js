@@ -10,7 +10,7 @@ const oAuth2Client = new google.auth.OAuth2(CLIENT_ID,CLIENT_SECRET,REDIRECT_URI
 oAuth2Client.setCredentials({ refresh_token: REFRESH_TOKEN});
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-  res.send('Invalid Request');
+  res.send('Send proper request');
 });
 
 router.post("/register",async(req,res)=>{
