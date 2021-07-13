@@ -31,7 +31,7 @@ const createJWTLogin = async({firstname,email})=>{
         },
         secret,
         {
-            expiresIn:"24h"
+            expiresIn:"3h"
         }
     )
 }
