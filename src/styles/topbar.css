@@ -1,0 +1,49 @@
+.top-wrapper{
+    background-color: #3939a4;
+    display:grid;
+    grid-template-columns: auto auto;
+}
+.top-left-wrapper{
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: left;
+}
+.top-right-wrapper{
+    display: grid;
+    grid-template-columns: auto;
+    justify-self: right;
+}
+.top-right-elements{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    gap:20px;
+    padding: 10px;
+}
+.logo{
+
+    width: 50px;
+    height: auto;
+    padding: 5px;
+    margin: 10px 10px;
+}
+.brandname{
+    font-family: Verdana;
+    color: white;
+    font-size:x-large;
+    padding: 10px 0px;
+    margin-top: 10px;
+}
+.create-button{
+    background-color: #25adde;
+    border-radius: 5px;
+    border: solid #25adde 2px;
+    outline: none;
+    padding: 5px 20px;
+    color: white;
+}
+.create-button:hover{
+    background-color: #1690bd;
+    border: solid #1690bd 2px;
+}
