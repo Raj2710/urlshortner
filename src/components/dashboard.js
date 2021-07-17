@@ -3,16 +3,14 @@ import axios from "axios";
 import { useState,useEffect } from "react";
 import Sidebar from "./dashboard/sidebar";
 import Topbar from "./dashboard/topbar";
-import Mainview from "./dashboard/mainview";
-import CreatePopup from "./dashboard/popup";
+import CreatePopup from "./dashboard/popup"; 
 export default function Dashboard(props){
-    let [email,setEmail]=useState("");
+    let userData;
     let [createVisibility,setCreateVisibility]=useState(false);
     useEffect(()=>{
         async function Auth(){
             if(props.location.state){
-                setEmail(props.location.state.email);
-                localStorage.setItem('userData',JSON.stringify({email:props.location.state.email,token:props.location.state.token}));
+                localStorage.setItem('userData',JSON.stringify({email:props.location.state.email,token:props.location.state.token,firstname:props.location.state.firstname}));
                 await axios.post("https://urlshortnerbe.herokuapp.com/users/authenticate",{
                 token:props.location.state.token
             })
@@ -26,8 +24,7 @@ export default function Dashboard(props){
             .catch(error=>console.log(error))
             }
             else if(localStorage.getItem('userData')){
-                let userData = JSON.parse(localStorage.getItem('userData'));
-                setEmail(userData.email);
+                userData = JSON.parse(localStorage.getItem('userData'));
                 await axios.post("https://urlshortnerbe.herokuapp.com/users/authenticate",{
                 token:userData.token
             })
@@ -46,13 +43,12 @@ export default function Dashboard(props){
             }
         }
         Auth();
-    },[props.location.state,props.history,email])
+    },[])
     return<>
-        <Topbar email={email} setVisibility={setCreateVisibility}/>
-        {createVisibility?<CreatePopup trigger="true" setVisibility={setCreateVisibility}/>:""}
+        <Topbar email={props.location.state.email?props.location.state.email:userData.email} firstname={props.location.state.firstname?props.location.state.firstname:userData.firstname} setVisibility={setCreateVisibility}/>
+        {createVisibility?<CreatePopup trigger="true" email={props.location.state.email?props.location.state.email:userData.email} setVisibility={setCreateVisibility}/>:""}
         <div className="main-wrapper">
-            <Sidebar/>
-            <Mainview/>
+            <Sidebar email={props.location.state.email?props.location.state.email:userData.email}/>
         </div>
     </>
 }

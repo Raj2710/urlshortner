@@ -13,6 +13,7 @@ export default function Login(props){
     let handleEvent = async()=>{
         setRes("");
         setLoading(true);
+        //console.log(email,pwd);
         if(email && pwd){
             await axios.post("https://urlshortnerbe.herokuapp.com/users/login",{
             email:email,
@@ -28,6 +29,7 @@ export default function Login(props){
                         pathname: url,
                         state: {
                             email:email,
+                            firstname:response.data.firstname,
                             token:response.data.token
                         }
                        });

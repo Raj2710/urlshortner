@@ -1,4 +1,6 @@
-.sidebar-wrapper{
-    width: 40%;
-    height: 100%;
+.main-body-wrapper{
+    display: grid;
+    grid-template-columns: 40% 60%;
+    width: 100%;
+    background:pink;
 }

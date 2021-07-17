@@ -25,7 +25,7 @@
 }
 .create-input:focus{
     outline: 2px solid #25adde;
-    outline-offset: 1px;
+    outline-offset: 2px;
     border: 1px solid #25adde;
 }
 .short-url{
@@ -40,4 +40,23 @@
 #close-button{
   color: white;
   padding: 5px;
+  float: right;
+}
+.shorturl{
+  background-color: #4d4dcf;
+  text-align: center;
+  color: white;
+  font-size:x-large;
+}
+ .Link{
+  text-decoration: underline;
+  color:rgba(245, 245, 245, 0.911);
+}
+.Link:active{
+  text-decoration: underline;
+  color:rgba(245, 245, 245, 0.911);
+}
+.Link:hover{
+  cursor: pointer;
+  color: white;
 }
