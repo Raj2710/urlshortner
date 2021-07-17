@@ -2,8 +2,8 @@ var express = require('express');
 const { gamesManagement_v1management } = require('googleapis');
 var router = express.Router();
 const{dbUrl,mongodb,MongoClient}=require("../dbConfig");
+const fetch = require("node-fetch");
 const { nanoid } = require('nanoid');
-
 router.get('/getall',async(req,res)=>{
   //to get all the details of selected user for dashboard information
   const client = await MongoClient.connect(dbUrl,{ useUnifiedTopology: true });
@@ -38,6 +38,19 @@ router.get('/getdetails/:url',async(req,res)=>{
 
 router.post('/createurl',async(req,res)=>{
   //to create a url body should have {usermail,longurl}
+  const parseTitle = (body) => {
+    let match = body.match(/<title>([^<]*)<\/title>/) // regular expression to parse contents of the <title> tag
+    if (!match || typeof match[1] !== 'string')
+      throw new Error('Unable to parse the title tag')
+    return match[1]
+  }
+  let url = req.body.longurl;
+  let title = await fetch(url)
+  .then(res=>res.text())
+  .then(body=>parseTitle(body))
+  .then(t=>{return t})
+  .catch(e=>{console.log(e)})
+  console.log(title);
   const client = await MongoClient.connect(dbUrl,{ useUnifiedTopology: true });
   let data = {
     email:req.body.email,
@@ -54,10 +67,12 @@ router.post('/createurl',async(req,res)=>{
   }
   catch(error){
     console.log(error);
+    res.sendStatus(403);
   }
   finally{
     client.close();
   }
+        
 
 })
 
