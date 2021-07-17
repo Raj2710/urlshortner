@@ -57,7 +57,7 @@ router.post('/createurl',async(req,res)=>{
     longurl:req.body.longurl,
     shorturl: nanoid(10),
     clicks:0,
-    title: req.body.title,
+    title: title,
     time: new Date(),
   }
   try{
