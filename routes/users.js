@@ -9,16 +9,21 @@ const path = require("path");
 const oAuth2Client = new google.auth.OAuth2(CLIENT_ID,CLIENT_SECRET,REDIRECT_URI);
 oAuth2Client.setCredentials({ refresh_token: REFRESH_TOKEN});
 /* GET users listing. */
-router.get('/getdetails', async(req, res)=> {
+router.get('/getdetails/:email', async(req, res)=> {
   const client = await MongoClient.connect(dbUrl,{ useUnifiedTopology: true });
   try{
     const db = client.db("urlshortner");
-    let user = await db.collection("users").findOne({email:req.body.email})
-    res.send({
-      firstname:user.firstname,
-      lastname:user.lastname,
-      role:user.role
-    })
+    let user = await db.collection("users").findOne({email:req.params.email})
+    if(user){
+      res.send({
+        firstname:user.firstname,
+        lastname:user.lastname,
+        role:user.role
+      })
+    }
+    else{
+      console.log("error");
+    }
   }
   catch(error){
     console.log(error);
