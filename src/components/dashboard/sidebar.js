@@ -6,7 +6,7 @@ export default function Sidebar(props){
     let [data,setData]=useState([]);
     useEffect(()=>{
       async function getAllData(){
-        await axios.get(`http://localhost:4000/getall/${props.email}`)
+        await axios.get(`https://urlshortnerbe.herokuapp.com/getall/${props.email}`)
         .then((res)=>setData(res.data))
         .catch((error)=>console.log(error))
        }
