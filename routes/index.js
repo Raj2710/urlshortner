@@ -4,10 +4,10 @@ var router = express.Router();
 const{dbUrl,mongodb,MongoClient}=require("../dbConfig");
 const fetch = require("node-fetch");
 const { nanoid } = require('nanoid');
-router.get('/getall',async(req,res)=>{
+router.get('/getall/:email',async(req,res)=>{
   //to get all the details of selected user for dashboard information
   const client = await MongoClient.connect(dbUrl,{ useUnifiedTopology: true });
-  let email=req.body.email;
+  let email=req.params.email;
   try {
     const db = client.db("urlshortner");
     let data = await db.collection("url").find({email:email}).sort({time:-1}).toArray();
@@ -55,7 +55,7 @@ router.post('/createurl',async(req,res)=>{
   let data = {
     email:req.body.email,
     longurl:req.body.longurl,
-    shorturl: nanoid(10),
+    shorturl: nanoid(6),
     clicks:0,
     title: title,
     time: new Date(),
