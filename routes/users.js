@@ -127,9 +127,10 @@ router.post("/login",async(req,res)=>{
               firstname:user.firstname,
               email:user.email
             })
-            user = await db.collection("users").updateOne({email:user.email},{$set:{token:token}})
+            let details = await db.collection("users").updateOne({email:user.email},{$set:{token:token}})
             res.status(200).json({
               token,
+              firstname:user.firstname,
               message:"Login Successfull"
             })
         }else{
