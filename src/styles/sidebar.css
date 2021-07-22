@@ -1,6 +1,13 @@
-.main-body-wrapper{
-    display: grid;
-    grid-template-columns: 40% 60%;
-    width: 100%;
-    background:pink;
+.sidebar-wrapper{
+    padding: 10px;
+    height: 580px;
+    width: 40%;
+    overflow-y: scroll;
+}
+.side-card-wrapper{
+    border-bottom: 1px solid black;
+
+}
+.side-card-wrapper:hover{
+    cursor: pointer;
 }

@@ -1,4 +1,9 @@
+.main-wrapper{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+}
 .mainview-wrapper{
     width: 60%;
-    background-color: aquamarine;
 }

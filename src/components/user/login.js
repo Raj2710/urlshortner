@@ -1,15 +1,35 @@
 import "../../styles/login.css"
 import {Link} from "react-router-dom";
-import { useState} from "react";
+import { useState,useEffect} from "react";
+import { useHistory } from "react-router-dom";
 import axios from "axios";
 import Loading from "../loading";
 export default function Login(props){
+    let history = useHistory();
     let [loading,setLoading]=useState(false);
     let [email,setEmail]=useState("");
     let [pwd,setPwd]=useState("");
     let [show,setShow]=useState(true);
     let [res,setRes]=useState("");
     let [ins,setIns]=useState("");
+    useEffect(()=>{
+        let loginStatus = async()=>{
+            if(localStorage.getItem('userData')){
+                let userDetails = JSON.parse(localStorage.getItem('userData'));
+                    await axios.post("https://urlshortnerbe.herokuapp.com/users/authenticate",{
+                    token:userDetails.token
+                })
+                .then(async(response)=>{
+                    console.log(response.data.auth);
+                    if(response.data.auth){
+                        history.push("/dashboard")
+                    }
+                })
+                .catch(error=>console.log(error))
+            }
+        }
+        loginStatus();
+    },[history])
     let handleEvent = async()=>{
         setRes("");
         setLoading(true);
