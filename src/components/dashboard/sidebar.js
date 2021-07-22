@@ -4,14 +4,17 @@ import {useEffect, useState} from "react";
 import axios from "axios";
 export default function Sidebar(props){
     let [data,setData]=useState([]);
+    let [userData,setUserData]=useState(JSON.parse(localStorage.getItem('userData')))
     useEffect(()=>{
-      async function getAllData(){
-        await axios.get(`https://urlshortnerbe.herokuapp.com/getall/${props.email}`)
-        .then((res)=>setData(res.data))
-        .catch((error)=>console.log(error))
-       }
+      async function getAllData()
+      {
+          await axios.get(`https://urlshortnerbe.herokuapp.com/getall/${userData.email}`)
+          .then((res)=>setData(res.data))
+          .catch((error)=>console.log(error))
+      }
+      if(userData)
         getAllData();
-    },[]);
+    },[userData]);
     
     return<>
     <div className="main-body-wrapper">
@@ -30,7 +33,6 @@ export default function Sidebar(props){
             })
           }
       </div>
-      <Mainview/>
     </div>
     </>
 }

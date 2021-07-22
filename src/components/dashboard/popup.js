@@ -27,6 +27,6 @@ export default function CreatePopup(props){
             </div>
             <i className="far fa-window-close fa-2x" id="close-button" onClick={handleClose}></i>
         </div>
-        {shorturl?<div className="shorturl">Short Url: <a href={longurl} className="Link" target="_blank" rel="noreferrer">{shorturl}</a></div>:""}
+        {shorturl?<div className="shorturl">Short Url: <a href={`https://urlshortnerbe.herokuapp.com/${shorturl}`} className="Link" target="_blank" rel="noreferrer">{shorturl}</a></div>:""}
     </>:"";
 }

@@ -23,6 +23,7 @@ export default function Login(props){
             await setRes(response.data.message);
             await setIns(response.data.instruction);
             setTimeout(() => {
+                localStorage.setItem('userData',JSON.stringify({email:email,token:response.data.token,firstname:response.data.firstname}));
                 let url ="/dashboard";
                 if(response.data.token){
                     props.history.push({ 

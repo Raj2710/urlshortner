@@ -2,7 +2,6 @@ import urllogo from "./urllogo.png";
 import "../../styles/topbar.css";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
-import { useEffect } from "react";
 export default function Topbar(props){
     let history = useHistory();
     let handleEvent = ()=>{
