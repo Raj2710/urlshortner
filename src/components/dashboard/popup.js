@@ -13,10 +13,11 @@ export default function CreatePopup(props){
             setShorturl(response.data.shorturl);
         })
         .catch((error)=>console.log(error))
+        props.setReload(prev=>!prev);
     }
     let handleClose = ()=>{
         props.setVisibility(false);
-        setTimeout(window.location.reload(),1000);
+        props.setReload(prev=>!prev);
     }
     return (props.trigger)?<>
         <div className="create-popup-wrapper">

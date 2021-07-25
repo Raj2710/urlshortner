@@ -16,21 +16,23 @@ export default function Sidebar(props){
       }
       if(userData)
         getAllData();
-    },[userData]);
+    },[userData,props.reload]);
     return<>
     <div className="main-wrapper">
       <div className="sidebar-wrapper">
-        <span>{data.length} Resluts</span>
-        <span>Clicks all time</span>
+        <div className="side-titlebar">  
+          <span>{data.length} Resluts</span>
+          <span>Clicks all time</span>
+        </div>
           {
             data.map((e,i)=>{
                 let date = new Date(e.time).toDateString();
               return <div key={i} className="side-card-wrapper" onClick={()=>setLink(e)}>
                   <div className="card-time">{date}</div>
-                  <div className="card-title">{e.title}</div>
+                  <div className="card-title title">{e.title}</div>
                   <div className="third-row-wrapper">
                     <div className="card-shorturl"><a href={`https://urlshortnerbe.herokuapp.com/${e.shorturl}`} className="side-link" target="_blank" rel="noreferrer">{e.shorturl}</a></div>
-                    <div className="card-clicks">{e.clicks}</div>
+                    <div className="card-clicks">{e.clicks} <i className="fas fa-mouse fa-xl clicks"></i></div>
                   </div>
               </div>
             })

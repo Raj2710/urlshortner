@@ -3,9 +3,34 @@
     height: 580px;
     width: 40%;
     overflow-y: scroll;
+    background-color: #f5f6f7;
+}
+.side-titlebar{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    border-bottom: 1px solid #828387;
+    background-color: #f5f6f7;
+    padding: 5px;
+
+}
+.card-time{
+    color: #828387;
+    font-size: 1.1rem;
+}
+.card-title{
+    font-size: large;
+}
+.third-row-wrapper{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 5px;
 }
 .side-card-wrapper{
-    border-bottom: 1px solid black;
+    margin: 5px 0px 5px 0px;
+    padding: 5px 0px 5px 0px;
+    border-bottom: 1px solid #828387;
 
 }
 .side-card-wrapper:hover{

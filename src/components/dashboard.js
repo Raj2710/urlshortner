@@ -7,6 +7,7 @@ import CreatePopup from "./dashboard/popup";
 export default function Dashboard(props){
     let [userData,setUserData]=useState({});
     let [createVisibility,setCreateVisibility]=useState(false);
+    let[reload,setReload]=useState(false);
     useEffect(()=>{
         async function setData(){
             await setUserData(JSON.parse(localStorage.getItem('userData')));
@@ -18,7 +19,7 @@ export default function Dashboard(props){
                 token:userDetails.token
             })
             .then(async(response)=>{
-                console.log(response.data.auth);
+                //console.log(response.data.auth);
                 if(!response.data.auth){
                     alert("Session Expired Login Again?");
                     props.history.push("/user/login")
@@ -36,7 +37,7 @@ export default function Dashboard(props){
     },[props.history])
     return <>
         <Topbar email={userData.email} firstname={userData.firstname} setVisibility={setCreateVisibility}/>
-        {createVisibility?<CreatePopup trigger="true" email={userData.email} setVisibility={setCreateVisibility}/>:""}
-        <Sidebar email={userData.email}/>
+        {createVisibility?<CreatePopup trigger="true" email={userData.email} setVisibility={setCreateVisibility} setReload={setReload}/>:""}
+        <Sidebar email={userData.email} reload={reload}/>
         </>
 }

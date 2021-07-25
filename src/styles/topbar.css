@@ -9,6 +9,7 @@
     justify-content: left;
 }
 .top-right-wrapper{
+    background-color: #3939a4;
     display: grid;
     grid-template-columns: auto;
     justify-self: right;

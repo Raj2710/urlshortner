@@ -5,5 +5,48 @@
 
 }
 .mainview-wrapper{
+    padding: 4.5rem;
     width: 60%;
+}
+.main-time{
+    color: #828387;
+    letter-spacing: .3px;
+    font-size: smaller;
+    text-transform: uppercase;
+    display: inline-block;
+}
+.main-longurl{
+    word-wrap: break-word;
+    color: #828387;
+    display: inline;
+}
+.main-shorturl{
+    margin-right: 2rem;
+    margin-top: 30px;
+    color: #337ab7;
+    text-decoration: none;
+}
+.main-btn{
+    margin-right: 2rem;
+    margin-top: 30px;
+    color: #337ab7;
+    background-color: #FFF;
+    border: .1rem solid #337ab7;
+    border-radius: .5rem;
+}
+.main-title{
+    color: #36383b;
+    font-size: x-large;
+    margin-top: .4rem;
+    width: 100%;
+}
+.clicks{
+    color: #828387;
+}
+hr{
+    top: 1px;
+    border: none;
+    height: 1px;
+    background: #828387;
+    margin-bottom: 50p
 }

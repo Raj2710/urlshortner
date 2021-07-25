@@ -52,3 +52,8 @@
   cursor: pointer;
   color: white;
 }
+.title{
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
