@@ -7,7 +7,6 @@ export default function Mainview(props){
       if(window.confirm("Are you sure? You requested to delete "+link)){
       axios.delete(`https://urlshortnerbe.herokuapp.com/delete/${link}`)
       .then((res)=>{
-        console.log(res.data.message);
         props.setReload(prev=>!prev);
         props.setLink({});
       })
