@@ -40,7 +40,7 @@ export default function Sidebar(props){
           }
       </div>
       <div className="mainview-wrapper">
-        <Mainview link={link}/>
+        <Mainview link={link} setReload={props.setReload} setLink={setLink}/>
       </div>
     </div>
     </>

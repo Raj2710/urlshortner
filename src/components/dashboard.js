@@ -38,6 +38,6 @@ export default function Dashboard(props){
     return <>
         <Topbar email={userData.email} firstname={userData.firstname} setVisibility={setCreateVisibility}/>
         {createVisibility?<CreatePopup trigger="true" email={userData.email} setVisibility={setCreateVisibility} setReload={setReload}/>:""}
-        <Sidebar email={userData.email} reload={reload}/>
+        <Sidebar email={userData.email} reload={reload} setReload={setReload}/>
         </>
 }

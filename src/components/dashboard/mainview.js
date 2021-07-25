@@ -1,14 +1,15 @@
 import "../../styles/mainview.css"
 import axios from "axios";
-import { useState } from "react";
+import { useState} from "react";
 export default function Mainview(props){
   let [clicked,setClick] = useState(false);
   let handleDelete = async(link)=>{
-      if(window.confirm("You are about to delete")){
+      if(window.confirm("Are you sure? You requested to delete "+link)){
       axios.delete(`https://urlshortnerbe.herokuapp.com/delete/${link}`)
       .then((res)=>{
         console.log(res.data.message);
-        window.location.reload();
+        props.setReload(prev=>!prev);
+        props.setLink({});
       })
       .then((error)=>console.log(error));
     }
