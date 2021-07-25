@@ -8,11 +8,12 @@ export default function Sidebar(props){
     let [data,setData]=useState([]);
     let [userData]=useState(JSON.parse(localStorage.getItem('userData')))
     let [link,setLink]=useState({});
+    let [load,setLoad]=useState(false);
     useEffect(()=>{
       async function getAllData()
       {
           await axios.get(`https://urlshortnerbe.herokuapp.com/getall/${userData.email}`)
-          .then((res)=>setData(res.data))
+          .then((res)=>{setData(res.data); setLoad(true);})
           .catch((error)=>console.log(error))
       }
       if(userData)
@@ -26,7 +27,7 @@ export default function Sidebar(props){
           <span>Clicks all time</span>
         </div>
           {
-            data[0]?data.map((e,i)=>{
+            load?data[0]?data.map((e,i)=>{
                 let date = new Date(e.time).toDateString();
               return <div key={i} className="side-card-wrapper" onClick={()=>setLink(e)}>
                   <div className="card-time">{date}</div>
@@ -36,7 +37,7 @@ export default function Sidebar(props){
                     <div className="card-clicks">{e.clicks} <i className="fas fa-mouse fa-xl clicks"></i></div>
                   </div>
               </div>
-            }):<div className="loader"><Loading/></div>
+            }):<div className="loader" style={{marginTop:"20px"}}>Create Your First Link</div>:<div className="loader"><Loading/></div>
           }
       </div>
       <div className="mainview-wrapper">
