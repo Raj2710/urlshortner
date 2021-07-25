@@ -36,3 +36,6 @@
 .side-card-wrapper:hover{
     cursor: pointer;
 }
+.loader{
+    text-align: center;
+}

@@ -3,6 +3,7 @@ import "../../styles/mainview.css";
 import Mainview from "./mainview"
 import {useEffect, useState} from "react";
 import axios from "axios";
+import Loading from "../loading";
 export default function Sidebar(props){
     let [data,setData]=useState([]);
     let [userData]=useState(JSON.parse(localStorage.getItem('userData')))
@@ -25,7 +26,7 @@ export default function Sidebar(props){
           <span>Clicks all time</span>
         </div>
           {
-            data.map((e,i)=>{
+            data[0]?data.map((e,i)=>{
                 let date = new Date(e.time).toDateString();
               return <div key={i} className="side-card-wrapper" onClick={()=>setLink(e)}>
                   <div className="card-time">{date}</div>
@@ -35,7 +36,7 @@ export default function Sidebar(props){
                     <div className="card-clicks">{e.clicks} <i className="fas fa-mouse fa-xl clicks"></i></div>
                   </div>
               </div>
-            })
+            }):<div className="loader"><Loading/></div>
           }
       </div>
       <div className="mainview-wrapper">
