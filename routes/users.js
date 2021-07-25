@@ -81,7 +81,9 @@ router.post("/register",async(req,res)=>{
     }
   } catch (error) {
     console.log(error);
-    res.sendStatus(500);
+    res.json({
+      message:"Error Occured at Server end"
+    });
   }
   finally{
     client.close();
@@ -180,7 +182,9 @@ router.post("/login",async(req,res)=>{
     }
   } catch (error) {
       console.log(error);
-      res.sendStatus(400);
+      res.json({
+        message:"Error Occured at Server end"
+      });
   }
   finally{
     client.close()//closing the connection
@@ -235,7 +239,9 @@ router.post('/reset-password',async(req,res)=>{
     }
   }
   catch(error){
-
+    res.json({
+      message:"Error Occured at Server end"
+    });
   }
   finally{
     client.close();
